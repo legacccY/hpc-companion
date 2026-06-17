@@ -1,0 +1,6 @@
+# PyQt6 锁 6.6.1：6.7+ 在部分 anaconda/旧 MSVC 环境会 DLL load failed
+PyQt6==6.6.1
+PyQt6-Qt6==6.6.1
+paramiko>=3.4
+keyring>=24.0
+pyqtgraph>=0.13
