@@ -38,7 +38,8 @@ def stylesheet(name: str | None = None) -> str:
     p = palette(name)
     return f"""
 * {{
-    font-family: "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    font-family: "Segoe UI", "PingFang SC", "Helvetica Neue", "Microsoft YaHei UI",
+                 "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
     font-size: 13px; color: {p['TEXT']}; outline: none;
 }}
 QMainWindow, QWidget {{ background: {p['BG']}; }}
@@ -82,7 +83,8 @@ QComboBox QAbstractItemView {{
     background: {p['BG_INPUT']}; border: 1px solid {p['BORDER']};
     selection-background-color: {p['ACCENT']}; selection-color: {p['SEL_TEXT']};
 }}
-QPlainTextEdit, QTextEdit {{ font-family: "Cascadia Mono", "Consolas", monospace; }}
+QPlainTextEdit, QTextEdit {{ font-family: "SF Mono", "Menlo", "Monaco", "Cascadia Mono",
+                                         "Consolas", "DejaVu Sans Mono", monospace; }}
 QCheckBox {{ color: {p['TEXT']}; }}
 
 /* 列表 / 表格 / 树 */

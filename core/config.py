@@ -7,7 +7,7 @@ from pathlib import Path
 
 APP_NAME = "HPC Companion"
 APP_VERSION = "0.1.0"
-ORG = "YJ-Agent"
+ORG = "HPCCompanion"
 
 # keyring 服务名（密码加密存于系统凭据库）
 KEYRING_SERVICE = "hpc-companion"
@@ -61,13 +61,13 @@ def resource_path(rel: str) -> Path:
 
 # 内置预设：用户新建连接时可一键套用，凭证仍需自己填。
 CLUSTER_PRESETS = {
-    "GPU 集群示例 (gpu4090)": {
+    "GPU 集群示例": {
         "host": "",                   # 填你的集群登录 / 数据传输节点地址
         "port": 22,
         "username": "",
         "slurm_account": "",          # 填你自己的 SLURM account / 课题组配额
-        "partition": "gpu4090",
-        "qos": "4gpus",
+        "partition": "gpu",
+        "qos": "gpu",
         "default_remote_dir": "",     # 例 /home/<user>/work
         "vpn_note": "校外通常需先连学校 VPN 才能访问集群。",
         "python_path": "",

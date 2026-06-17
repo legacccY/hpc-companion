@@ -64,27 +64,46 @@
 
 ---
 
-## 🚀 快速开始
+## ⬇️ 下载
+
+到 [**Releases**](../../releases) 下载开箱即用的版本（由 GitHub Actions 自动构建）：
+
+- **Windows** —— `HPC-Companion-windows.exe`，双击运行
+- **macOS** —— `HPC-Companion-macos.zip`，解压得到 `HPC Companion.app` 拖进「应用程序」
+
+> macOS 首次打开若提示「无法验证开发者」，右键 App → 打开，或在「系统设置 → 隐私与安全性」放行（应用未做 Apple 签名）。
+
+## 🚀 源码运行
 
 ```bash
 pip install -r requirements.txt
 python main.py
 ```
 
+支持 **Windows / macOS / Linux**（Python 3.10+）。
+
 > [!NOTE]
 > **PyQt6 版本锁定 `6.6.1`**。`6.7+` 在部分 Anaconda / 旧 MSVC 运行库环境会报
 > `DLL load failed while importing QtCore`，换环境前先确认。
 
-## 📦 打包成 exe
+## 📦 自己打包
+
+同一份 `build.spec` 跨平台，在对应系统上运行即可：
 
 ```bash
 pip install pyinstaller
 pyinstaller build.spec --noconfirm
-# 产物：dist/HPC-Companion.exe（单文件，可直接发给同学）
 ```
 
-`build.spec` 已处理 paramiko / keyring / cryptography 的隐式导入与 OpenSSL 兼容问题。
-首次打包后，建议在一台没装 Python 的干净机器上验证：能启动、能连接、密码能存进凭据库。
+| 系统 | 产物 |
+| --- | --- |
+| Windows | `dist/HPC-Companion.exe`（单文件） |
+| macOS | `dist/HPC Companion.app`（拖进「应用程序」即可） |
+| Linux | `dist/HPC-Companion`（单文件可执行） |
+
+`build.spec` 按平台收 keyring 后端、处理 paramiko / cryptography 隐式导入与 OpenSSL 兼容；
+macOS 额外包成 `.app`（Retina、跟随系统深 / 浅色）。无需自己买 Mac —— 推一个 `v*` tag，
+GitHub Actions 会在云端的 Windows / macOS runner 上自动打包并发布到 Releases。
 
 ## 🔒 安全设计
 
