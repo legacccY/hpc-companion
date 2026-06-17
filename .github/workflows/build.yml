@@ -13,6 +13,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# 发 Release 需要写 contents 权限（默认 GITHUB_TOKEN 只读 → 附件 403）
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
